@@ -1,5 +1,6 @@
 
 package vendingMachine;
+import java.awt.desktop.ScreenSleepEvent;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -183,10 +184,9 @@ public class VendingMachineTester {
         	   }  
            }
         	
-        	
-        	System.out.println(vm.display.vend());
-        	System.out.println(vm.bevReceiver.getSoda());
-        	System.out.println();
+        	screen.changeText(vm.display.vend());
+        	TimeUnit.MILLISECONDS.sleep(500);
+        	screen.changeText(vm.bevReceiver.getSoda());
         	sp.removeSoda();
         	TimeUnit.SECONDS.sleep(1);
            }	

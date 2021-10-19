@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 
 public class VendingScreen implements ActionListener {
 	
@@ -41,6 +43,7 @@ public class VendingScreen implements ActionListener {
 		coinButtons = new JButton[4];
 		coinButtons[0] = new JButton("bill");
 		coinButtons[0].setBackground(Color.decode("#118C4F"));
+		coinButtons[0].addActionListener(this);
 		coinButtons[1] = new JButton("quarter");
 		coinButtons[2] = new JButton("dime");
 		coinButtons[3] = new JButton("nickel");
@@ -57,6 +60,9 @@ public class VendingScreen implements ActionListener {
 		
 		
 		label = new JLabel("Vending Machine");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+		label.setBackground(Color.BLACK);
 		
 		
 			
@@ -70,15 +76,22 @@ public class VendingScreen implements ActionListener {
 		panelBottom = new JPanel();
 		panelBottom.setBorder(BorderFactory.createEmptyBorder());
 		panelBottom.setLayout(new GridLayout(4, 4));
-		for(int i = 1; i < 10; i ++) {
+		for(int i = 1; i < 4; i ++) {
 			panelBottom.add(IDButtons[i]);
 		}
+		panelBottom.add(coinButtons[0]);
+		for(int i = 4; i < 7; i ++) {
+			panelBottom.add(IDButtons[i]);
+		}
+		panelBottom.add(coinButtons[1]);
+		for(int i = 7; i < 10; i ++) {
+			panelBottom.add(IDButtons[i]);
+		}
+		panelBottom.add(coinButtons[2]);
 		panelBottom.add(decimalButton);
 		panelBottom.add(IDButtons[0]);
 		panelBottom.add(enterButton);
-		for(int i = 0; i < 4; i++) {
-			panelBottom.add(coinButtons[i]);
-		}
+		panelBottom.add(coinButtons[3]);
 		
 		
 		panelTopAndBottom = new JPanel();
