@@ -39,24 +39,29 @@ public class VendingScreen implements ActionListener {
 		for(int i = 0; i < 10; i++) {
 			IDButtons[i] = new JButton("" + i);
 			IDButtons[i].addActionListener(this);
+			IDButtons[i].setFocusPainted(false);
 		}
 		coinButtons = new JButton[4];
-		coinButtons[0] = new JButton("bill");
+		coinButtons[0] = new JButton("Bill");
 		coinButtons[0].setBackground(Color.decode("#118C4F"));
 		coinButtons[0].addActionListener(this);
-		coinButtons[1] = new JButton("quarter");
-		coinButtons[2] = new JButton("dime");
-		coinButtons[3] = new JButton("nickel");
+		coinButtons[0].setFocusPainted(false);
+		coinButtons[1] = new JButton("Quarter");
+		coinButtons[2] = new JButton("Dime");
+		coinButtons[3] = new JButton("Nickel");
 		for(int i = 1; i < 4; i++) {
 			coinButtons[i].setBackground(Color.gray);
 			coinButtons[i].addActionListener(this);
+			coinButtons[i].setFocusPainted(false);
 		}
 		
 		 decimalButton = new JButton(".");
 		 decimalButton.addActionListener(this);
+		 decimalButton.setFocusPainted(false);
 		 
 		 enterButton = new JButton("Enter");
 		 enterButton.addActionListener(this);
+		 enterButton.setFocusPainted(false);
 		
 		
 		label = new JLabel("Vending Machine");

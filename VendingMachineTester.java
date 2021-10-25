@@ -14,6 +14,8 @@ public class VendingMachineTester {
 		int numStockpiles;
 		
 	  // Set size of array from user input
+		screen.changeText("Machine Setup");
+		TimeUnit.SECONDS.sleep(2);
        screen.changeText("Enter the number of soda types: ");
        screen.toggleSeekingInput();
        while(screen.getSeekingInput()) {
@@ -30,8 +32,9 @@ public class VendingMachineTester {
 	   double priceOfSoda;
 	   int sodaID;
 	   for(int i = 0; i < numStockpiles; i++) {
-		   
-		   screen.changeText("Enter the number of sodas");
+		   screen.changeText("Soda " + (i + 1));
+		   TimeUnit.SECONDS.sleep(1);
+		   screen.changeText("Enter the quantity");
 		   screen.toggleSeekingInput();
 		   screen.resetInput();
 		   while(screen.getSeekingInput()) {
@@ -63,13 +66,14 @@ public class VendingMachineTester {
 		
 	   // Create a vending machine containing the stockpileArray that we created and filled above
 	   VendingMachine vm = new VendingMachine(stockpileArray);
-	   System.out.println();
-            		
+	   
+	   screen.changeText("Ready for Commercial Use");
+		TimeUnit.SECONDS.sleep(2);
 	   while(true) {
           
 		 // Check if user wants to buy a soda. If yes, get ID of the desired soda from user input
-           System.out.println("Enter the ID of stockpile: ");
-           screen.changeText("Enter the ID of Stockpile: ");
+           System.out.println("Enter the ID of soda");
+           screen.changeText("Enter the ID of soda: ");
            screen.toggleSeekingInput();
            while(screen.getSeekingInput()) {
         	   System.out.println(screen.getInput());
@@ -165,30 +169,43 @@ public class VendingMachineTester {
         		   System.out.println(vm.changeLight.notEnough());
         	   }
         	   if(q > 0) {
-        		   if(q == 1)
-        			   System.out.println("Take " + q + " quarter from the change receiver.");
-        		   else
-        			   System.out.println("Take " + q + " quarters from the change receiver");
+        		   if(q == 1) {
+        			   screen.changeText("Take " + q + " quarter from the change receiver");
+        			   TimeUnit.SECONDS.sleep(1);
+        		   }
+        		   else {
+        			   screen.changeText("Take " + q + " quarters from the change receiver");
+        			   TimeUnit.SECONDS.sleep(1);
+        		   }
         	   }
         	   if(d > 0) {
-        		   if(d == 1)
-        			   System.out.println("Take " + d + " dime from the change receiver.");
-        		   else
-        			   System.out.println("Take " + d + " dimes from the change receiver");
+        		   if(d == 1) {
+        			   screen.changeText("Take " + d + " dime from the change receiver");
+        			   TimeUnit.SECONDS.sleep(1);
+        		   }
+        		   else {
+        			   screen.changeText("Take " + d + " dimes from the change receiver");
+        			   TimeUnit.SECONDS.sleep(1);
+        		   }
         	   }
         	   if(n > 0) {
-        		   if(n == 1)
-        			   System.out.println("Take " + n + " nickel from the change receiver.");
-        		   else
-        			   System.out.println("Take " + n + " nickels from the change receiver");
+        		   if(n == 1) {
+        			   screen.changeText("Take " + n + " nickel from the change receiver");
+        			   TimeUnit.SECONDS.sleep(1);
+        	   }
+        		   else {
+        			   screen.changeText("Take " + n + " nickels from the change receiver");
+        			   TimeUnit.SECONDS.sleep(1);
+        	   }
         	   }  
            }
         	
         	screen.changeText(vm.display.vend());
-        	TimeUnit.MILLISECONDS.sleep(500);
+        	TimeUnit.SECONDS.sleep(1);
         	screen.changeText(vm.bevReceiver.getSoda());
         	sp.removeSoda();
         	TimeUnit.SECONDS.sleep(1);
+        	screen.resetInput();
            }	
           }
         }
