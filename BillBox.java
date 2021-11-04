@@ -1,42 +1,44 @@
 package vendingMachine;
 
+/**
+ * @author tobyf
+ *
+ */
 public class BillBox {
 
 	int bills;
 	
-	
-	// BillBox() -> void
-	// BillBox constructor
+	/**
+	 *  Constructor that sets bills to 0
+	 */
 	public BillBox() {
 		bills = 0;
 	}
 	
-	
-	// addBill() -> void
-	// increments bills by 1
+	/**
+	 *  increments bills
+	 */
 	public void addBill() {
 		bills++;
 	}
-	public void addBills(int num) {
-		bills += num;
-	}
-    
-		
-	// resetBills() -> void
-	// sets bills to 0
+
+	/**
+	 *  sets bills to 0
+	 */
 	public void resetBills() {
 		bills = 0;
 	}
 	
-	// removeBill() -> void
-	// decrements bills by 1
+	/**
+	 *  decrements bills
+	 */
 	public void removeBill() {
 		bills--;
 	}
 	
-
-	// getBills() -> int
-	// returns the bills data field
+	/**
+	 * @return current number of bills in BillBox
+	 */
 	public int getBills() {
 		return bills;
 	}

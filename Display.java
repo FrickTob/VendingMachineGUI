@@ -1,16 +1,22 @@
 package vendingMachine;
 
+/**
+ * @author tobyf
+ *
+ */
 public class Display {
 		
-	// soldOut() -> String
-	// returns a message that the stockpile has no soda left
+	/**
+	 * @return "Stockpile has run out of soda."
+	 */
 	public String soldOut() {
 		return "Stockpile has run out of soda.";
 	}
 		
 
-	// vend() -> String
-	// returns a message that soda was purchased
+	/**
+	 * @return "Soda is purchased successfully."
+	 */
 	public String vend() {
 		return "Soda is purchased successfully.";
 	}

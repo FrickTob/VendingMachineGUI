@@ -1,4 +1,7 @@
+
+
 package vendingMachine;
+
 
 public class Stockpile {
 	
@@ -8,37 +11,44 @@ public class Stockpile {
 	
 	
     
-	// Stockpile(int, price, id) -> void
-	// Constructor for Stockpile
+	/**
+	 * @param count : This is the number of sodas of a this type
+	 * @param price : This is the price of this type of soda
+	 * @param id : This is the id of this type of soda
+	 */
 	public Stockpile(int count, double price, int id) {
 		this.count = count;
 		this.price = price;
 		this.id = id;
 	}
 	
-	// removeSoda() -> void
-	// decrements count by 1
+	/**
+	 *  Removes one soda from this stockpile
+	 */
 	public void removeSoda() {
 		count--;
 	}
 	
-
-	// isEmpty() -> boolean
-	// returns true if Stockpile is empty and false otherwise
+	/**
+	 * @return returns true if there are no sodas left and false otherwise
+	 */
 	public boolean isEmpty() {
 		if(count <= 0)
 			return true;
 		return false;
 	}
 	
-	// getPrice() -> double
-	// returns price
+	/**
+	 * @return returns price of the soda
+	 */
 	public double getPrice() {
 		return price;
 	}
 	
-	// getID() -> int
-	// returns id
+	
+	/**
+	 * @return returns id of the soda
+	 */
 	public int getId() {
 		return id;
 	}

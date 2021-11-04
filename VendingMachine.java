@@ -1,23 +1,28 @@
 package vendingMachine;
+
+/**
+ * @author tobyf
+ *
+ */
 public class VendingMachine {
 	
-  Stockpile[] stocks;
-  BeverageReceiver bevReceiver;
-  ChangeReceiver changeReceiver;
-  BillBox billBox;
-  CoinBox receiverCoinBox;
-  CoinBox changeCoinBox;
-  ChangeLight changeLight;
-  Display display;
+  private Stockpile[] stocks;
+  private BeverageReceiver bevReceiver;
+  private BillBox billBox;
+  private CoinBox receiverCoinBox;
+  private CoinBox changeCoinBox;
+  private ChangeLight changeLight;
+  private Display display;
   
  
-  
-  // VendingMaching(Stockpile[]) -> void
-  // VendingMachine constructor
-  public VendingMachine(Stockpile[] stocks) {
+  /**
+ * @param stocks : array of Stockpiles
+ * Constructor 
+ * makes a vending machine using stocks
+ */
+public VendingMachine(Stockpile[] stocks) {
 	  this.stocks = stocks;
 	  bevReceiver = new BeverageReceiver();
-	  changeReceiver = new ChangeReceiver();
 	  billBox = new BillBox();
 	  receiverCoinBox = new CoinBox();
 	  changeCoinBox = new CoinBox();
@@ -25,48 +30,68 @@ public class VendingMachine {
 	  display = new Display();
 	  
   }
-  
-
- //getStockpiles() -> Stockpile[]
- // returns this stockpile array 
-  public Stockpile[] getStockpiles() {
+   
+  /**
+ * @return this machine's Stockpile array
+ */
+public Stockpile[] getStockpiles() {
 	  return this.stocks;
   }
   
 
- //getBillBox() -> BillBox
- // returns this billBox
-  public BillBox getBillBox() {
+  /**
+ * @return this machine's billbox
+ */
+public BillBox getBillBox() {
 	  return this.billBox;
   }
   
 
-//getReceiverCoinBox() -> Coinbox
- // returns this receiverCoinBox
-  public CoinBox getReceiverCoinBox() {
+
+  /**
+ * @return this machine's receiverCoinBox
+ */
+public CoinBox getReceiverCoinBox() {
 	  return this.receiverCoinBox;
   }
   
 
- //getchangeCoinBox() -> Coinbox
- // returns this changeCoinBox
-  public CoinBox getchangeCoinBox() {
+
+  /**
+ * @return this machine's changeCoinBox
+ */
+public CoinBox getchangeCoinBox() {
 	  return this.changeCoinBox;
   }
     
 
-  // getDisplay() -> Display
-  // returns this display
-  public Display getDisplay() {
+  /**
+ * @return this machine's display
+ */
+public Display getDisplay() {
 	  return this.display;
   }
   
+/**
+ * @return this machine's bevReceiver
+ */
+public BeverageReceiver getbevReceiver() {
+	return this.bevReceiver;
+}
+	
+/**
+ * @return this machine's changeLight
+ */
+public ChangeLight getChangeLight() {
+	return this.changeLight;
+}
 
-
-  // computeChange(int, int) -> int
-  // Takes deposit and price as input and returns deposit if it is not enough money to pay for the soda
-  // and returns deposit - price if deposit is enough to pay for the soda
-  public int computeChange(int deposit, int price) {
+  /**
+ * @param deposit : amount of money deposited
+ * @param price : price of soda
+ * @return correct change
+ */
+public int computeChange(int deposit, int price) {
 	  if(deposit < price) {
 		  System.out.println(changeLight.notEnough());
 		  return deposit;
@@ -76,9 +101,10 @@ public class VendingMachine {
 	  }
   }
   
-  // depositsToCents() -> int
-  // returns the value of all change in billbox and recievercoinbox in cents.
-  public int depositsToCents() {
+  /**
+ * @return total deposits in cents
+ */
+public int depositsToCents() {
 	  int cents =  (billBox.getBills() * 100);
 	  cents += (receiverCoinBox.getQuarters() * 25);
 	  cents += (receiverCoinBox.getDimes() * 10);
@@ -86,10 +112,14 @@ public class VendingMachine {
 	  return cents;
   }
 
-  // priceToCents(Stockpile) -> int
-  // converts the price of a given stockpile to cents.
-  public int priceToCents(Stockpile s) {
+  /**
+ * @param s : type of soda in machine
+ * @return : cost of soda in cents
+ */
+public int priceToCents(Stockpile s) {
 	  int cents =(int) (s.getPrice() * 100);
 	  return cents;
   }
+
+
 }

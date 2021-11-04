@@ -1,5 +1,9 @@
 package vendingMachine;
 
+/**
+ * @author tobyf
+ *
+ */
 public class CoinBox {
  
 	private int quarters;
@@ -7,90 +11,106 @@ public class CoinBox {
 	private int nickels;
   
 
-  public CoinBox() {
+  /**
+ *  Constructor
+ *  Sets quarters, dimes, and nickels to 0
+ */
+public CoinBox() {
 	  quarters = 0;
 	  dimes = 0;
 	  nickels = 0;
   }
   
-// increments quarters by 1
-  public void addQuarter() {
+
+  /**
+ *  Increments quarters
+ */
+public void addQuarter() {
 	  quarters++;
   }
-// increments dimes by 1
+
+/**
+*  Increments dimes
+*/
   public void addDime() {
 	  dimes++;
   }
-// increments nickels by 1
+  
+  /**
+   *  Increments nickels
+   */
   public void addNickel() {
 	  nickels++;
   }
-// increments quarters by num
-  public void addQuarter(int num) {
-	  quarters += num;
-  }
-// increments dimes by num
-  public void addDime(int num) {
-	  dimes += num;
-  }
-// increments nickels by num
-  public void addNickel(int num) {
-	  nickels += num;
-  }
-    
+  
+
 // returns the current number of quarters
-  public int getQuarters() {
+  /**
+ * @return quarters
+ */
+public int getQuarters() {
 	  return quarters;
   }
 // returns the current number of dimes
-  public int getDimes() {
+
+  /**
+ * @return dimes
+ */
+public int getDimes() {
 	  return dimes;
   }
-// returns the current number of nickels
-  public int getNickels() {
+
+  /**
+ * @return nickels
+ */
+public int getNickels() {
 	  return nickels;
   }
-  
-// removes one quarter 
-  public void removeQuarter() {
+   
+  /**
+ *  Decrements quarters
+ */
+public void removeQuarter() {
 	  quarters -= 1;
   }
   
- //removes one dime 
-  public void removeDime() {
+
+  /**
+ *  Decrements dimes
+ */
+public void removeDime() {
 	  dimes -= 1;
   }
   
- // removes one nickel 
-  public void removeNickel() {
+  /**
+ * Decrements nickels
+ */
+public void removeNickel() {
 	  nickels -= 1;
   }
     
-
-// sets the number of quarters to num
-  public void setQuarters(int num) {
-	  quarters = num;
-  }
-//sets the number of dimes to num
-  public void setDimes(int num) {
-	  dimes = num;
- }
-//sets the number of nickels to num
-  public void setNickels(int num) {
-	  nickels = num;
+/**
+ * Sets all coins to 0
+ */
+public void resetCoins() {
+	nickels = 0;
+	dimes = 0;
+	quarters = 0;
 }
-
   
   // transferCoins(CoinBox)
   // takes a CoinBox as input and sets this coinbox's coin values to that of 
   // the input CoinBox and sets the input coinbox's coin values to 0.
-  public void transferCoins(CoinBox cb) {
+
+  /**
+ * @param cb : coinbox to take coins from
+ * Transfers all coins from cb to this
+ */
+public void transferCoins(CoinBox cb) {
 	  this.quarters += cb.getQuarters();
 	  this.dimes += cb.getDimes();
 	  this.nickels += cb.getNickels();
-	  cb.setQuarters(0);
-	  cb.setDimes(0);
-	  cb.setNickels(0);
+	  cb.resetCoins();
 	  
   }
 }

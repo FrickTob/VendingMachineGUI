@@ -1,7 +1,8 @@
+// Main Method for Vending Machine Project
+
 
 package vendingMachine;
-import java.awt.desktop.ScreenSleepEvent;
-import java.util.Scanner;
+
 import java.util.concurrent.TimeUnit;
 
 
@@ -118,55 +119,58 @@ public class VendingMachineTester {
            	   int currPrice = vm.priceToCents(sp);
            	   screen.changeText("Insert Change");
         	while(currDeposit < currPrice ) {  
+        		
+        		screen.changeText("" + (currDeposit / 100.0));
         		     
         		if(screen.getInput() != "") {
               
               if(screen.getInput() == "bill") {
-            	  vm.billBox.addBill();
+            	  vm.getBillBox().addBill();
               }
               if(screen.getInput() == "quarter") {
-            	  vm.receiverCoinBox.addQuarter();
+            	  vm.getReceiverCoinBox().addQuarter();
               }
               if(screen.getInput() == "dime") {
-            	  vm.receiverCoinBox.addDime();
+            	  vm.getReceiverCoinBox().addDime();
               }
               if(screen.getInput() == "nickel") {
-            	  vm.receiverCoinBox.addNickel();
+            	  vm.getReceiverCoinBox().addNickel();
               }
               
               currDeposit = vm.depositsToCents();
+              screen.changeText("Insert Change\n" + (currDeposit / 100.0));
               screen.resetInput();
         		}
         		System.out.println(screen.getInput()); 
               
            }
         	System.out.println();
-        	vm.changeCoinBox.transferCoins(vm.getReceiverCoinBox());
-        	vm.billBox.resetBills();
+        	vm.getchangeCoinBox().transferCoins(vm.getReceiverCoinBox());
+        	vm.getBillBox().resetBills();
         	
            if(currDeposit > currPrice) {
         	   int change = currDeposit - currPrice;
         	   int q = 0; // q, d, and n represent the amount of change available to return to the user
         	   int d = 0;
         	   int n = 0;
-        	   while (vm.changeCoinBox.getQuarters() > 0 && change / 25 > 0) {
-        		   vm.changeCoinBox.removeQuarter();
+        	   while (vm.getchangeCoinBox().getQuarters() > 0 && change / 25 > 0) {
+        		   vm.getchangeCoinBox().removeQuarter();
         		   q += 1;
         		   change -= 25;
         	   }
-        	   while (vm.changeCoinBox.getDimes() > 0 && change / 10 > 0) {
-        		   vm.changeCoinBox.removeDime();
+        	   while (vm.getchangeCoinBox().getDimes() > 0 && change / 10 > 0) {
+        		   vm.getchangeCoinBox().removeDime();
         		   d += 1;
         		   change -= 10;
         	   }
-        	   while (vm.changeCoinBox.getNickels() > 0 && change / 5 > 0) {
-        		   vm.changeCoinBox.removeNickel();
+        	   while (vm.getchangeCoinBox().getNickels() > 0 && change / 5 > 0) {
+        		   vm.getchangeCoinBox().removeNickel();
         		   n += 1;
         		   change -= 5;
         	   }
         	   
         	   if(change > 0) {
-        		   System.out.println(vm.changeLight.notEnough());
+        		   System.out.println(vm.getChangeLight().notEnough());
         	   }
         	   if(q > 0) {
         		   if(q == 1) {
@@ -200,9 +204,9 @@ public class VendingMachineTester {
         	   }  
            }
         	
-        	screen.changeText(vm.display.vend());
+        	screen.changeText(vm.getDisplay().vend());
         	TimeUnit.SECONDS.sleep(1);
-        	screen.changeText(vm.bevReceiver.getSoda());
+        	screen.changeText(vm.getbevReceiver().getSoda());
         	sp.removeSoda();
         	TimeUnit.SECONDS.sleep(1);
         	screen.resetInput();

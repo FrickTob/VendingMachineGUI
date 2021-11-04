@@ -29,6 +29,9 @@ public class VendingScreen implements ActionListener {
 	Boolean seekingInput;
 	
 	
+	/**
+	 * Constructor
+	 */
 	public VendingScreen() {
 		
 		currInput = new String("");
